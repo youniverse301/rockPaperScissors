@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Rock Paper Scissors!</title>
+</head>
+<body>
+<script> 
+  let one = "Rock"
+  let two = "Paper"
+  let three = "Scissors"
+  const resultOne = one > three
+  const resultTwo = two > one
+  const resultThree = three > two
+
+  function getComputerChoice(computerSelection) {
+    return computerSelection[Math.floor(Math.random()*computerSelection.length)];
+  }
+  var computerSelection = ["Rock","Paper","Scissors"]
+  console.log(getComputerChoice(computerSelection));
+ 
+  let playerSelection = prompt("Rock, paper or scissors");
+  function capitalize (playerSelection) {
+    return playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase();
+  }
+  console.log(capitalize(playerSelection))
+
+  if (computerSelection === playerSelection) {
+    console.log("It was a draw!");
+  }
+    
+
+  </script>
+</body>
+</html>
