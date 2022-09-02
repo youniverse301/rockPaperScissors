@@ -6,29 +6,49 @@
 </head>
 <body>
 <script> 
-  let one = "Rock"
-  let two = "Paper"
-  let three = "Scissors"
-  const resultOne = one > three
-  const resultTwo = two > one
-  const resultThree = three > two
-
-  function getComputerChoice(computerSelection) {
-    return computerSelection[Math.floor(Math.random()*computerSelection.length)];
-  }
-  var computerSelection = ["Rock","Paper","Scissors"]
-  console.log(getComputerChoice(computerSelection));
+var Rock = "Rock"
+var Paper = "Paper"
+var Scissors = "Scissors"
  
-  let playerSelection = prompt("Rock, paper or scissors");
+function getComputerChoice(computerSelection) {
+  return computerSelection[Math.floor(Math.random()*computerSelection.length)];
+}
+
+  var computerSelection = [Rock, Paper, Scissors]
+  let comp = getComputerChoice(computerSelection)
+  console.log(comp);
+  let playerSelection = prompt("Rock, paper or scissors?");
+  
   function capitalize (playerSelection) {
     return playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase();
   }
   console.log(capitalize(playerSelection))
-
-  if (computerSelection === playerSelection) {
-    console.log("It was a draw!");
-  }
+ 
+  function playRound(playerSelection,comp) {
     
+     if (comp === "Rock" && playerSelection === "Paper"){
+      console.log("Player wins! :D")
+    }
+    else if (comp === "Paper" && playerSelection === "Rock"){
+      console.log("Player lost. :(")
+    }
+    else if (comp === "Paper" && playerSelection === "Scissors"){
+      console.log("Player wins! :D")
+  }
+  else if (comp === "Scissors" && playerSelection === "Paper"){
+    console.log("Player lost. :(")
+  }
+  else if (comp === "Scissors" && playerSelection === "Rock"){
+    console.log("Player wins! :D")
+  }
+  else if (comp === "Rock" && playerSelection === "Scissors"){
+    console.log("Player lost. :(")
+  }
+}
+console.log(playRound(playerSelection,comp))
+ 
+
+
 
   </script>
 </body>
