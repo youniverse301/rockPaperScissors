@@ -16,7 +16,7 @@ function getComputerChoice(computerSelection) {
 
   var computerSelection = [Rock, Paper, Scissors]
   let comp = getComputerChoice(computerSelection)
-  console.log(comp);
+  
   let playerSelection = prompt("Rock, paper or scissors?");
   
   function capitalize (playerSelection) {
@@ -28,33 +28,34 @@ function getComputerChoice(computerSelection) {
   function playRound(player,comp) {
     
      if (comp === "Rock" && player === "Paper"){
-      console.log("Player wins! :D")
+      return ("You Win! Paper beats rock")
     }
     else if (comp === "Paper" && player === "Rock"){
-      console.log("Player lost. :(")
+      return ("You lose! Paper beats rock")
     }
     else if (comp === "Paper" && player === "Scissors"){
-      console.log("Player wins! :D")
+      return ("You win! Scissors beats paper" )
   }
   else if (comp === "Scissors" && player === "Paper"){
-    console.log("Player lost. :(")
+    return ("You lose! Scissors beats paper")
   }
   else if (comp === "Scissors" && player === "Rock"){
-    console.log("Player wins! :D")
+    return ("You win! Rock beats scissors")
   }
   else if (comp === "Rock" && player === "Scissors"){
-    console.log("Player lost. :(")
+    return ("You lose! Rock beats scissors")
   }
   else if (comp === "Rock" && player === "Rock"){
-    console.log("It's a draw.")
+    return ("It's a draw.")
 }
 else if (comp === "Paper" && player === "Paper"){
-    console.log("It's a draw.")
+     return ("It's a draw.")
 }
 else if (comp === "Scissors" && player === "Scissors"){
-    console.log("It's a draw.")
+    return ("It's a draw.")
 }
   }
+console.log(comp);
 console.log(playRound(player,comp))
  
 
