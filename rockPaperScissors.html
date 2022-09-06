@@ -22,30 +22,40 @@ function getComputerChoice(computerSelection) {
   function capitalize (playerSelection) {
     return playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase();
   }
-  console.log(capitalize(playerSelection))
+  let player = capitalize(playerSelection)
+  console.log(player);
  
-  function playRound(playerSelection,comp) {
+  function playRound(player,comp) {
     
-     if (comp === "Rock" && playerSelection === "Paper"){
+     if (comp === "Rock" && player === "Paper"){
       console.log("Player wins! :D")
     }
-    else if (comp === "Paper" && playerSelection === "Rock"){
+    else if (comp === "Paper" && player === "Rock"){
       console.log("Player lost. :(")
     }
-    else if (comp === "Paper" && playerSelection === "Scissors"){
+    else if (comp === "Paper" && player === "Scissors"){
       console.log("Player wins! :D")
   }
-  else if (comp === "Scissors" && playerSelection === "Paper"){
+  else if (comp === "Scissors" && player === "Paper"){
     console.log("Player lost. :(")
   }
-  else if (comp === "Scissors" && playerSelection === "Rock"){
+  else if (comp === "Scissors" && player === "Rock"){
     console.log("Player wins! :D")
   }
-  else if (comp === "Rock" && playerSelection === "Scissors"){
+  else if (comp === "Rock" && player === "Scissors"){
     console.log("Player lost. :(")
   }
+  else if (comp === "Rock" && player === "Rock"){
+    console.log("It's a draw.")
 }
-console.log(playRound(playerSelection,comp))
+else if (comp === "Paper" && player === "Paper"){
+    console.log("It's a draw.")
+}
+else if (comp === "Scissors" && player === "Scissors"){
+    console.log("It's a draw.")
+}
+  }
+console.log(playRound(player,comp))
  
 
 
