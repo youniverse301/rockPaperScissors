@@ -6,11 +6,13 @@
 </head>
 <body>
 <script> 
+for (let i = 0; i < 5; i++) {
+  
 var Rock = "Rock"
 var Paper = "Paper"
 var Scissors = "Scissors"
  
-function getComputerChoice(computerSelection) {
+const getComputerChoice = (computerSelection) => {
   return computerSelection[Math.floor(Math.random()*computerSelection.length)];
 }
 
@@ -24,43 +26,57 @@ function getComputerChoice(computerSelection) {
   }
   let player = capitalize(playerSelection)
   console.log(player);
- 
+var win = "You win!"
+var lose = "You lose!"
+var draw = "It's a draw."
   function playRound(player,comp) {
-    
      if (comp === "Rock" && player === "Paper"){
-      return ("You Win! Paper beats rock")
+      return (win + " Paper beats rock")
     }
     else if (comp === "Paper" && player === "Rock"){
-      return ("You lose! Paper beats rock")
+      return (lose + " Paper beats rock")
     }
     else if (comp === "Paper" && player === "Scissors"){
-      return ("You win! Scissors beats paper" )
+      return (win + " Scissors beats paper" )
   }
   else if (comp === "Scissors" && player === "Paper"){
-    return ("You lose! Scissors beats paper")
+    return (lose + " Scissors beats paper")
   }
   else if (comp === "Scissors" && player === "Rock"){
-    return ("You win! Rock beats scissors")
+    return (win + " Rock beats scissors")
   }
   else if (comp === "Rock" && player === "Scissors"){
-    return ("You lose! Rock beats scissors")
+    return (lose + " Rock beats scissors")
   }
   else if (comp === "Rock" && player === "Rock"){
-    return ("It's a draw.")
+    return (draw)
 }
 else if (comp === "Paper" && player === "Paper"){
-     return ("It's a draw.")
+     return (draw)
 }
 else if (comp === "Scissors" && player === "Scissors"){
-    return ("It's a draw.")
+    return (draw)
 }
   }
 console.log(comp);
 console.log(playRound(player,comp))
- 
+let result = playRound(player,comp)
+function game() {
+  playRound(player,comp);
+var playerScore = 0;
+var compScore = 0;
+if (result.includes('win')) {
+  let p = playerScore+1;
+ console.log("Player: " + p);
+}
+if (result.includes('lose')) {
+  let c = compScore+1;
+ console.log("Computer: " + c);
+}
 
-
-
+}
+console.log(game());
+}
   </script>
 </body>
 </html>
