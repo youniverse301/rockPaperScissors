@@ -6,6 +6,8 @@
 </head>
 <body>
 <script> 
+var playerScore = 0;
+var compScore = 0;
 for (let i = 0; i < 5; i++) {
   
 var Rock = "Rock"
@@ -25,7 +27,7 @@ const getComputerChoice = (computerSelection) => {
     return playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase();
   }
   let player = capitalize(playerSelection)
-  console.log(player);
+  console.log("Player: " + player);
 var win = "You win!"
 var lose = "You lose!"
 var draw = "It's a draw."
@@ -58,24 +60,33 @@ else if (comp === "Scissors" && player === "Scissors"){
     return (draw)
 }
   }
-console.log(comp);
+console.log("Computer: " + comp);
 console.log(playRound(player,comp))
+
 let result = playRound(player,comp)
 function game() {
   playRound(player,comp);
-var playerScore = 0;
-var compScore = 0;
+
 if (result.includes('win')) {
-  let p = playerScore+1;
+  let p = ++playerScore;
  console.log("Player: " + p);
 }
-if (result.includes('lose')) {
-  let c = compScore+1;
+else if (result.includes('lose')) {
+  let c = ++compScore;
  console.log("Computer: " + c);
 }
 
 }
 console.log(game());
+}
+if (playerScore > compScore) {
+  console.log("You Won the match! Your score: " + playerScore + ", The computers score: " + compScore)
+}
+if (playerScore < compScore) {
+  console.log("You lost the match. Your score: " + playerScore + ", The computers score: " + compScore)
+}
+if (playerScore === compScore) {
+  console.log("The match was a tie!")
 }
   </script>
 </body>
