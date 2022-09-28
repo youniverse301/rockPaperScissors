@@ -5,89 +5,103 @@
   <title>Rock Paper Scissors!</title>
 </head>
 <body>
+<div class="mybuttons">
+  <button id="Rock">Rock</button>
+  <button id="Paper">Paper</button>
+  <button id="Scissors">Scissors</button>
+</div>
 <script> 
 var playerScore = 0;
 var compScore = 0;
-for (let i = 0; i < 5; i++) {
+//for (let i = 0; i < 5; i++) {
   
-var Rock = "Rock"
-var Paper = "Paper"
-var Scissors = "Scissors"
- 
-const getComputerChoice = (computerSelection) => {
-  return computerSelection[Math.floor(Math.random()*computerSelection.length)];
-}
+  var Rock = "Rock"
+  var Paper = "Paper"
+  var Scissors = "Scissors"
+
+  const getComputerChoice = (computerSelection) => {
+    return computerSelection[Math.floor(Math.random()*computerSelection.length)];
+  }
 
   var computerSelection = [Rock, Paper, Scissors]
   let comp = getComputerChoice(computerSelection)
-  
-  let playerSelection = prompt("Rock, paper or scissors?");
-  
-  function capitalize (playerSelection) {
-    return playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase();
-  }
-  let player = capitalize(playerSelection)
-  console.log("Player: " + player);
-var win = "You win!"
-var lose = "You lose!"
-var draw = "It's a draw."
-  function playRound(player,comp) {
-     if (comp === "Rock" && player === "Paper"){
+  //let playerSelection = prompt("Rock, paper or scissors?");
+
+const mybuttons = document.querySelectorAll('.mybuttons button');
+mybuttons.forEach(mybutton => {
+   mybutton.addEventListener('click', processClick);
+});
+var playerSelection;
+function processClick() {
+    playerSelection= this.id; // the id of the clicked button 
+    console.log("Player: " + playerSelection);
+    console.log("Computer: " + comp); 
+    console.log(playRound(playerSelection,comp));
+}
+  //function capitalize (playerSelection) {
+  //  return playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase();
+  //}
+    //let player = capitalize(playerSelection)
+    //console.log("Player: " + player);
+  var win = "You win!"
+  var lose = "You lose!"
+  var draw = "It's a draw."
+    function playRound(playerSelection,comp) {
+     if (comp === "Rock" && playerSelection === "Paper"){
       return (win + " Paper beats rock")
     }
-    else if (comp === "Paper" && player === "Rock"){
+    else if (comp === "Paper" && playerSelection === "Rock"){
       return (lose + " Paper beats rock")
     }
-    else if (comp === "Paper" && player === "Scissors"){
+    else if (comp === "Paper" && playerSelection === "Scissors"){
       return (win + " Scissors beats paper" )
   }
-  else if (comp === "Scissors" && player === "Paper"){
+  else if (comp === "Scissors" && playerSelection === "Paper"){
     return (lose + " Scissors beats paper")
   }
-  else if (comp === "Scissors" && player === "Rock"){
+  else if (comp === "Scissors" && playerSelection === "Rock"){
     return (win + " Rock beats scissors")
   }
-  else if (comp === "Rock" && player === "Scissors"){
+  else if (comp === "Rock" && playerSelection === "Scissors"){
     return (lose + " Rock beats scissors")
   }
-  else if (comp === "Rock" && player === "Rock"){
+  else if (comp === "Rock" && playerSelection === "Rock"){
     return (draw)
-}
-else if (comp === "Paper" && player === "Paper"){
-     return (draw)
-}
-else if (comp === "Scissors" && player === "Scissors"){
-    return (draw)
-}
   }
-console.log("Computer: " + comp);
-console.log(playRound(player,comp))
+  else if (comp === "Paper" && playerSelection === "Paper"){
+     return (draw)
+  }
+  else if (comp === "Scissors" && playerSelection === "Scissors"){
+    return (draw)
+  }
+//}
 
-let result = playRound(player,comp)
-function game() {
-  playRound(player,comp);
 
-if (result.includes('win')) {
-  let p = ++playerScore;
- console.log("Player: " + p);
-}
-else if (result.includes('lose')) {
-  let c = ++compScore;
- console.log("Computer: " + c);
-}
+//let result = playRound(player,comp)
+//function game() {
+//  playRound(player,comp);
 
+//if (result.includes('win')) {
+//  let p = ++playerScore;
+// console.log("Player: " + p);
+//}
+//else if (result.includes('lose')) {
+//  let c = ++compScore;
+// console.log("Computer: " + c);
+//}
+
+//}
+//console.log(game());
+//}
+//if (playerScore > compScore) {
+//  console.log("You Won the match! Your score: " + playerScore + ", The computers score: " + compScore)
+//}
+//if (playerScore < compScore) {
+//  console.log("You lost the match. Your score: " + playerScore + ", The computers score: " + compScore)
+//}
+//if (playerScore === compScore) {
+//  console.log("The match was a tie!")
 }
-console.log(game());
-}
-if (playerScore > compScore) {
-  console.log("You Won the match! Your score: " + playerScore + ", The computers score: " + compScore)
-}
-if (playerScore < compScore) {
-  console.log("You lost the match. Your score: " + playerScore + ", The computers score: " + compScore)
-}
-if (playerScore === compScore) {
-  console.log("The match was a tie!")
-}
-  </script>
+</script>
 </body>
 </html>
