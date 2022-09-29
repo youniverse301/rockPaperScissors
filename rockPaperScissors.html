@@ -9,7 +9,7 @@
   <button id="Rock">Rock</button>
   <button id="Paper">Paper</button>
   <button id="Scissors">Scissors</button>
-</div>
+  <div id="container"></div>
 <script> 
 var playerScore = 0;
 var compScore = 0;
@@ -34,9 +34,9 @@ mybuttons.forEach(mybutton => {
 var playerSelection;
 function processClick() {
     playerSelection= this.id; // the id of the clicked button 
-    console.log("Player: " + playerSelection);
-    console.log("Computer: " + comp); 
-    console.log(playRound(playerSelection,comp));
+    displayPlayer.textContent = "Player: " + playerSelection;
+    displayComp.textContent = "Computer: " + comp; 
+    displayResult.textContent = playRound(playerSelection,comp);
 }
   //function capitalize (playerSelection) {
   //  return playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase();
@@ -46,7 +46,7 @@ function processClick() {
   var win = "You win!"
   var lose = "You lose!"
   var draw = "It's a draw."
-    function playRound(playerSelection,comp) {
+function playRound(playerSelection,comp) {
      if (comp === "Rock" && playerSelection === "Paper"){
       return (win + " Paper beats rock")
     }
@@ -74,34 +74,48 @@ function processClick() {
   else if (comp === "Scissors" && playerSelection === "Scissors"){
     return (draw)
   }
-//}
-
-
-//let result = playRound(player,comp)
-//function game() {
-//  playRound(player,comp);
-
-//if (result.includes('win')) {
-//  let p = ++playerScore;
-// console.log("Player: " + p);
-//}
-//else if (result.includes('lose')) {
-//  let c = ++compScore;
-// console.log("Computer: " + c);
-//}
-
-//}
-//console.log(game());
-//}
-//if (playerScore > compScore) {
-//  console.log("You Won the match! Your score: " + playerScore + ", The computers score: " + compScore)
-//}
-//if (playerScore < compScore) {
-//  console.log("You lost the match. Your score: " + playerScore + ", The computers score: " + compScore)
-//}
-//if (playerScore === compScore) {
-//  console.log("The match was a tie!")
 }
+
+
+let result = playRound(playerSelection,comp)
+
+function game() {
+ // playRound(playerSelection,comp);
+
+ // if (result.includes('win')) {
+ // let p = ++playerScore;
+// console.log("Player: " + p);
+//  }
+//  else if (result.includes('lose')) {
+ // let c = ++compScore;
+ //console.log("Computer: " + c);
+//  }
+//}
+//console.log(game()); {
+
+if (playerScore > compScore) {
+  console.log("You Won the match! Your score: " + playerScore + ", The computers score: " + compScore)
+}
+if (playerScore < compScore) {
+  console.log("You lost the match. Your score: " + playerScore + ", The computers score: " + compScore)
+}
+if (playerScore === compScore) {
+  console.log("The match was a tie!")
+}
+}
+const container = document.querySelector('#container');
+
+const displayResult = document.createElement('div');
+displayResult.classList.add('content');
+container.appendChild(displayResult);
+
+const displayPlayer = document.createElement('div');
+displayPlayer.classList.add('content');
+container.appendChild(displayPlayer);
+
+const displayComp = document.createElement('div');
+displayComp.classList.add('content');
+container.appendChild(displayComp);
 </script>
 </body>
 </html>
