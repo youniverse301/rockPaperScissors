@@ -13,12 +13,14 @@
 <script> 
 var playerScore = 0;
 var compScore = 0;
+var win = "You win!"
+var lose = "You lose!"
+var draw = "It's a draw."
+var Rock = "Rock"
+var Paper = "Paper"
+var Scissors = "Scissors"
 //for (let i = 0; i < 5; i++) {
-  
-  var Rock = "Rock"
-  var Paper = "Paper"
-  var Scissors = "Scissors"
-
+ 
   const getComputerChoice = (computerSelection) => {
     return computerSelection[Math.floor(Math.random()*computerSelection.length)];
   }
@@ -27,25 +29,43 @@ var compScore = 0;
   let comp = getComputerChoice(computerSelection)
   //let playerSelection = prompt("Rock, paper or scissors?");
 
-const mybuttons = document.querySelectorAll('.mybuttons button');
-mybuttons.forEach(mybutton => {
-   mybutton.addEventListener('click', processClick);
-});
-var playerSelection;
-function processClick() {
-    playerSelection= this.id; // the id of the clicked button 
-    displayPlayer.textContent = "Player: " + playerSelection;
-    displayComp.textContent = "Computer: " + comp; 
-    displayResult.textContent = playRound(playerSelection,comp);
-}
-  //function capitalize (playerSelection) {
-  //  return playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase();
-  //}
-    //let player = capitalize(playerSelection)
-    //console.log("Player: " + player);
-  var win = "You win!"
-  var lose = "You lose!"
-  var draw = "It's a draw."
+
+
+const container = document.querySelector('#container');
+
+const displayPlayer = document.createElement('div');
+displayPlayer.classList.add('playerChoice');
+container.appendChild(displayPlayer);
+
+const displayComp = document.createElement('div');
+displayComp.classList.add('computerChoice');
+container.appendChild(displayComp);
+
+const displayResult = document.createElement('div');
+displayResult.classList.add('result');
+container.appendChild(displayResult);
+
+const displayPlayerScore = document.createElement('div');
+displayPlayerScore.classList.add('displayPlayerScore');
+container.appendChild(displayPlayerScore);
+
+const displayCompScore = document.createElement('div');
+displayCompScore.classList.add('displayCompScore');
+container.appendChild(displayCompScore);
+
+const displayGame = document.createElement('div');
+displayGame.classList.add('playerChoice');
+container.appendChild(displayGame);
+
+const displayScore = document.createElement('div');
+displayScore.classList.add('displayScore');
+container.appendChild(displayScore);
+
+const displayEndGame = document.createElement('div');
+displayEndGame.classList.add('displayendGame');
+container.appendChild(displayEndGame );
+
+
 function playRound(playerSelection,comp) {
      if (comp === "Rock" && playerSelection === "Paper"){
       return (win + " Paper beats rock")
@@ -54,7 +74,7 @@ function playRound(playerSelection,comp) {
       return (lose + " Paper beats rock")
     }
     else if (comp === "Paper" && playerSelection === "Scissors"){
-      return (win + " Scissors beats paper" )
+      return (win + " Scissors beats paper")
   }
   else if (comp === "Scissors" && playerSelection === "Paper"){
     return (lose + " Scissors beats paper")
@@ -77,45 +97,39 @@ function playRound(playerSelection,comp) {
 }
 
 
-let result = playRound(playerSelection,comp)
-
-function game() {
- // playRound(playerSelection,comp);
-
- // if (result.includes('win')) {
- // let p = ++playerScore;
-// console.log("Player: " + p);
-//  }
-//  else if (result.includes('lose')) {
- // let c = ++compScore;
- //console.log("Computer: " + c);
-//  }
-//}
-//console.log(game()); {
-
-if (playerScore > compScore) {
-  console.log("You Won the match! Your score: " + playerScore + ", The computers score: " + compScore)
+const mybuttons = document.querySelectorAll('.mybuttons button');
+mybuttons.forEach(mybutton => {
+   mybutton.addEventListener('click', processClick);
+});
+var playerSelection;
+function processClick() {
+    playerSelection= this.id; // the id of the clicked button 
+    displayPlayer.textContent = "Player: " + playerSelection;
+    displayComp.textContent = "Computer: " + comp; 
+    displayResult.textContent = playRound(playerSelection,comp);
+    let result = playRound(playerSelection,comp)
+    function game() {
+      playRound(playerSelection,comp);
+        if (result.includes('win')) {
+          let p = ++playerScore;
+        return "Player: " + p;}
+        else if (result.includes('lose')) {
+          let c = ++compScore;
+        return "Computer: " + c;}
+      }
+    displayScore.textContent = game(); 
+    function endGame () {
+      game();
+      if (playerScore > 4) {
+      return ("You Won the match!")
+      }
+      if (compScore > 4) {
+      return ("You lost the match.")
+      }
+    }
+    displayEndGame.textContent = endGame();
 }
-if (playerScore < compScore) {
-  console.log("You lost the match. Your score: " + playerScore + ", The computers score: " + compScore)
-}
-if (playerScore === compScore) {
-  console.log("The match was a tie!")
-}
-}
-const container = document.querySelector('#container');
 
-const displayResult = document.createElement('div');
-displayResult.classList.add('content');
-container.appendChild(displayResult);
-
-const displayPlayer = document.createElement('div');
-displayPlayer.classList.add('content');
-container.appendChild(displayPlayer);
-
-const displayComp = document.createElement('div');
-displayComp.classList.add('content');
-container.appendChild(displayComp);
 </script>
 </body>
 </html>
